@@ -1,5 +1,9 @@
 #include <String.h>
-//int len = 55;
+
+
+char crc_data[300];
+int str_len_x;
+
 
 int key[257] = {
   0x0000, 0xc0c1, 0xc181, 0x0140, 0xc301, 0x03c0, 0x0280, 0xc241,
@@ -36,20 +40,7 @@ int key[257] = {
   0x8201, 0x42c0, 0x4380, 0x8341, 0x4100, 0x81c1, 0x8081, 0x4040,
 };
 
-const char crc_data[300] = "\"NULL\"0000R000001L000000#666666[]_11:07:28,10-09-2018"; // "ACK"0000R000001L000000#666666[]
 
+int crc_cal();
 
-int crc_cal() {
-  uint16_t crc = 0;
-  for (uint16_t count = 0; count < strlen(crc_data); count++) {
-    crc = (crc >> 8) ^ key[(crc ^ crc_data[count]) & 0xFF];
-  }
-//  Serial.print("CRC: ");
-//  Serial.println(crc, HEX);  // Print CRC value in hexadecimal format
-  return crc;
-}
-int len_data(){
-  int data_len;
-  data_len = strlen(crc_data);
-  return data_len;
-}
+int len_data();
